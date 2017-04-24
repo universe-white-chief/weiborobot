@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 # 登录模块
+
 import urllib
 import urllib2
 import sys
@@ -7,7 +8,6 @@ import sys
 sys.path.append("..")
 from weibo import APIClient  # 可以用pip install sinaweibopy命令，来安装weibo的python SDK
 import config.myConfig as con
-
 
 def login():
     print "logging on..."
@@ -30,7 +30,8 @@ def login():
     headers = {
         "User-Agent": "Mozilla/5.0 (Windows NT 6.1; rv:11.0) Gecko/20100101 Firefox/11.0",
         "Host": "api.weibo.com",
-        "Referer": referer_url
+        "Referer": referer_url,
+        "Connection": "keep-alive"
     }
 
     req = urllib2.Request(
@@ -43,8 +44,6 @@ def login():
         print resp.geturl()
         # 获取最后32个字符
         code = resp.geturl()[-32:]
-
-        print code
         # 通过该code获取access_token，r是返回的授权结果
         r = client.request_access_token(code)
         print r
@@ -55,3 +54,6 @@ def login():
     except Exception, e:
         print 'login error!'
         print e
+
+if __name__ == "__main__":
+    print login()

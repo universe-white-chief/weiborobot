@@ -1,5 +1,6 @@
-# robot
-一些可爱的机器人程序
+#### Robot
 
-1.使用[QRobot](https://github.com/GinSmile/QRobot)
-实现一个基于python weibo sdk的robot
+### weiborobot
+基于[QRobot](https://github.com/GinSmile/QRobot)项目改造  
+20170425 添加了自动获取code方法
+
